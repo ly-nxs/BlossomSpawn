@@ -6,8 +6,7 @@ Fabric /spawn is a Server-Side Minecraft Fabric mod using Blossom-Lib that provi
 
 - [Dependencies](#dependencies)
 - [Config](#config)
-- [Commands & their permissions](#commands--their-permissions)
-- [Translation keys](#translation-keys)
+
 
 ## Dependencies
 
