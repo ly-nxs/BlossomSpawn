@@ -1,22 +1,20 @@
 {
   "schemaVersion": 1,
-  "id": "blossom-homes",
+  "id": "blossom-spawn",
   "version": "${version}",
-  "name": "BlossomHomes",
-  "description": "Blossom-series /homes command and utilities",
+  "name": "BlossomSpawn",
+  "description": "Blossom-series /spawn command and utilities",
   "authors": [
-    "CodedSakura"
+    "1ynxs"
   ],
   "contact": {
-    "website": "https://blossom.codedsakura.dev",
-    "repo": "https://github.com/BlossomMods/BlossomHomes"
+    "repo": "https://github.com/ly-nxs/BlossomSpawn"
   },
   "license": "MIT",
-  "icon": "assets/blossom-homes/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "dev.codedsakura.blossom.homes.BlossomHomes"
+      "dev.codedsakura.blossom.spawn.BlossomSpawn"
     ]
   },
   "mixins": [],
