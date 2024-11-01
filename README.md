@@ -1,4 +1,4 @@
-# BlossomHomes
+# BlossomSpawn
 
 BlossomHomes is a Minecraft Fabric mod in the Blossom-series mods that provides /home command and utilities
 
