@@ -21,7 +21,7 @@
   "depends": {
     "fabricloader": ">=0.14.3",
     "minecraft": [
-      "${supported_versions}"
+      ">=1.21.9"
     ],
     "blossom-lib": ">=2.5.11"
   },

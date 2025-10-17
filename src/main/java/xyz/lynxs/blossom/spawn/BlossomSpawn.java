@@ -13,6 +13,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import org.apache.logging.log4j.core.Logger;
 
 import static net.minecraft.server.command.CommandManager.literal;
@@ -23,30 +24,27 @@ public class BlossomSpawn implements ModInitializer {
 
     @Override
     public void onInitialize() {
-
-
-
         BlossomLib.addCommand(literal("spawn")
                 .requires(Permissions.require("blossom.spawn", true)
-                        .and(p -> CONFIG.spawn.enabled))
+                        .and(p -> CONFIG.enabled))
                 .executes(this::runSpawn));
     }
 
     private int runSpawn(CommandContext<ServerCommandSource> ctx) throws CommandSyntaxException {
         ServerPlayerEntity player = ctx.getSource().getPlayerOrThrow();
-
-        var destination = new TeleportUtils.TeleportDestination(player.getServer().getWorld(RegistryKey.of(RegistryKeys.WORLD, CONFIG.spawn.world)),
-                CONFIG.spawn.spawnPos,
-                CONFIG.spawn.usePlayerRotation ? player.lastYaw : CONFIG.spawn.yaw,
-                CONFIG.spawn.usePlayerRotation ? player.lastPitch : CONFIG.spawn.pitch
+        ServerWorld world = ctx.getSource().getServer().getWorld(RegistryKey.of(RegistryKeys.WORLD, CONFIG.world));
+        var destination = new TeleportUtils.TeleportDestination(world,
+                CONFIG.spawnPos.hashCode() == 0 ? world.getSpawnPoint().getPos().toCenterPos() : CONFIG.spawnPos,
+                CONFIG.usePlayerRotation ? player.lastYaw : CONFIG.yaw,
+                CONFIG.usePlayerRotation ? player.lastPitch : CONFIG.pitch
         );
 
         LOGGER.info("spawn {} ({}) to {}", player.getName(), player.getUuid(), destination);
 
         TeleportUtils.teleport(
-                CONFIG.spawn.teleportation,
-                CONFIG.spawn.standStill,
-                CONFIG.spawn.cooldown,
+                CONFIG.teleportation,
+                CONFIG.standStill,
+                CONFIG.cooldown,
                 BlossomSpawn.class,
                 player,
                 () -> destination

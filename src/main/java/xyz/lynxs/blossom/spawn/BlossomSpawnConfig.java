@@ -7,34 +7,18 @@ import net.minecraft.util.math.Vec3d;
 
 
 public class BlossomSpawnConfig {
-    static class TeleportProps {
-        boolean enabled = true;
+        public boolean enabled = true;
 
-        TeleportConfig teleportation = null;
+        public TeleportConfig teleportation = null;
 
-        int standStill = 5;
-        int cooldown = 120;
+        public int standStill = 5;
+        public int cooldown = 120;
 
-        boolean usePlayerRotation = true;
+        public boolean usePlayerRotation = true;
 
-        float yaw = 0f;
-        float pitch = 0f;
-
-        Vec3d spawnPos = new Vec3d(0.0, 64.0, 0.0);
-        Identifier world = Identifier.of("minecraft", "overworld");
-
-        TeleportProps() {
-            // For default values in GSON serialization
-        }
-
-        public TeleportProps(boolean enabled, int standStill, int cooldown) {
-            this.enabled = enabled;
-            this.standStill = standStill;
-            this.cooldown = cooldown;
-        }
-
-    }
-
-    TeleportProps spawn = new TeleportProps(true, 5, 120);
-
+        public float yaw = 0f;
+        public float pitch = 0f;
+        //world spawn if set to 0.0 0.0 0.0
+        public Vec3d spawnPos = new Vec3d(0.0, 0.0, 0.0);
+        public Identifier world = Identifier.of("minecraft", "overworld");
 }
